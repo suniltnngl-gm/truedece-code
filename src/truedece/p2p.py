@@ -3,13 +3,12 @@ from __future__ import annotations
 import asyncio
 import json
 from dataclasses import dataclass
-from typing import Awaitable, Callable
 
 from .node import Node
 from .storage import block_from_json, block_to_json
 
 
-@dataclass
+@dataclass(eq=False)
 class Peer:
     reader: asyncio.StreamReader
     writer: asyncio.StreamWriter
@@ -78,6 +77,6 @@ class P2PNode:
                 block = block_from_json(message["block"])
                 self.node.accept_block(block)
             elif kind == "transaction":
-                # Transaction transport is deliberately surfaced but transaction
-                # admission/mempool policy remains outside this first network slice.
+                # Transport is surfaced; admission/mempool policy remains outside
+                # this first network slice until transaction propagation is tested.
                 continue
