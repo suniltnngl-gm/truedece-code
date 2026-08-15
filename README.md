@@ -26,7 +26,21 @@ Minimal P2P propagation
 Independent-node convergence
 ```
 
-The control sample must be deterministic, restartable, fork-capable, and independently reproducible.
+The control sample is designed to be deterministic, restartable, fork-capable, and independently reproducible.
+
+## Implemented Foundation
+
+- Deterministic canonical serialization.
+- Block/header and transaction structures.
+- Single-algorithm PoW validation and cumulative work.
+- Minimal UTXO transition rules.
+- Fork-capable cumulative-work chain selection.
+- Filesystem block persistence and restart reconstruction.
+- Minimal miner.
+- Minimal TCP handshake and block propagation.
+- Deterministic tests for core, persistence, two-node propagation, and fork convergence.
+
+**These implementation artifacts are not yet claimed as passing evidence until executed in a reproducible environment.**
 
 ## Core Boundary
 
@@ -49,4 +63,4 @@ The private `truedece-research` repository is the authoritative research and con
 
 ## Status
 
-**THIN-CORE-001: ACTIVE — implementation starting from the frozen boundary.**
+**THIN-CORE-001: IMPLEMENTATION ACTIVE — acceptance evidence pending.**
