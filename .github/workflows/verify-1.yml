@@ -21,3 +21,5 @@ jobs:
         run: python -m pytest -q tests/test_thin_core.py
       - name: Execute P2P tests
         run: python -m pytest -q tests/test_p2p.py
+      - name: Execute VERIFY-1 Phase A immutable fixtures
+        run: python -m pytest -q tests/test_verify1_phase_a_fixtures.py
