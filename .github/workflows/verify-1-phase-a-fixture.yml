@@ -1,0 +1,21 @@
+name: THIN-CORE-001 VERIFY-1 Phase A Fixture Gate
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  fixture-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package and test dependencies
+        run: python -m pip install -e . pytest
+      - name: Execute immutable Phase A fixture suite
+        run: python -m pytest -q tests/test_verify1_phase_a_fixtures.py
