@@ -71,8 +71,12 @@ class Transaction:
             result["coinbase"] = self.coinbase
         return result
 
+    def serialize(self) -> bytes:
+        """Return the canonical byte representation used by txid derivation."""
+        return canonical_bytes(self.to_dict())
+
     def txid(self) -> str:
-        return hex_hash(canonical_bytes(self.to_dict()))
+        return hex_hash(self.serialize())
 
 
 UTXOKey = Tuple[str, int]
