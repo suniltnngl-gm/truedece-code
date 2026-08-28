@@ -36,7 +36,7 @@ def header_from_dict(data: dict) -> BlockHeader:
 
 def canonical_state(node: Node) -> bytes:
     entries = []
-    for block_hash, entry in sorted(node.chain.entries.items()):
+    for block_hash, entry in sorted(node.chain.entries.items(), key=lambda item: item[1].height):
         entries.append(
             {
                 "hash": block_hash,
